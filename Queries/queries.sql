@@ -105,3 +105,100 @@ ORDER BY de.dept_no
 
 SELECT * FROM current_emp_by_dept
 
+
+----- LIST 1 RETIRING EMP INFO WITH GENDER SALARY TO DATE (to check they are present emp)
+--USING THIS CODE WE KNEW THAT salaries did not have the emp working up to present moment,
+-- so we needed the dept_emp table as well that we knew from before it did have it
+select * from salaries
+ORDER BY to_date DESC;
+
+--3-TABLE JOIN
+--JOIN FOR RETIRING EMP (EMP_INFO) WITH THEIR SALARY FROM SALARIES TABLE AND TO_DATE FROM DEPT_EMP
+SELECT e.emp_no, e.first_name, e.last_name, e.gender, s.salary, de.to_date
+INTO emp_info
+FROM employees as e
+INNER JOIN salaries as s
+ON (e.emp_no = s.emp_no)
+INNER JOIN dept_emp as de
+ON (e.emp_no = de.emp_no)
+WHERE (e.birth_date BETWEEN '1952-01-01' AND '1955-12-31')
+     AND (e.hire_date BETWEEN '1985-01-01' AND '1988-12-31')
+	 AND (de.to_date = '9999-01-01');
+
+SELECT * FROM emp_info
+
+--
+
+--  THIS TWO FOLLOWING TABLES ARE GIVING PROBLEMS
+---- LIST 2: MANAGEMENT. Some of the emp retiring are from the mngt team and we want to know who
+----TABELE 2 MANAGERS RETIRING
+-- List of managers per department
+SELECT  dm.dept_no,
+        d.dept_name,
+        dm.emp_no,
+        ce.last_name,
+        ce.first_name,
+        dm.from_date,
+        dm.to_date
+-- INTO manager_info
+FROM dept_manager AS dm
+    INNER JOIN departments AS d
+        ON (dm.dept_no = d.dept_no)
+    INNER JOIN current_emp AS ce
+        ON (dm.emp_no = ce.emp_no);
+
+---- TABLE 3 DEPT RETIREES
+-- current_emp  + dept added to it
+SELECT ce.emp_no,
+	ce.first_name,
+	ce.last_name,
+	d.dept_name
+-- INTO dept_info
+FROM current_emp as ce
+INNER JOIN dept_emp as de
+ON (ce.emp_no = de.emp_no)
+INNER JOIN departments as d
+ON (de.dept_no = d.dept_no);
+
+--QUESTIONS TO ASK: 
+-- what is going on with salaries
+-- why are there only 5 active mngers for nine deptos
+-- why are some employees appearing twice? 
+
+--create tailored lists
+
+--
+
+
+--SKILL DRILL NEW TABLE
+SELECT ce.emp_no,
+	ce.first_name,
+	ce.last_name,
+	d.dept_name
+INTO dept_info_sales
+FROM current_emp as ce
+INNER JOIN dept_emp as de
+ON (ce.emp_no = de.emp_no)
+INNER JOIN departments as d
+ON (de.dept_no = d.dept_no)
+WHERE (d.dept_name = 'Sales')
+
+SELECT * FROM dept_info_sales
+
+
+
+--SKILL DRILL 2
+SELECT ce.emp_no,
+	ce.first_name,
+	ce.last_name,
+	d.dept_name
+INTO dept_info_sales_devlp
+FROM current_emp as ce
+INNER JOIN dept_emp as de
+ON (ce.emp_no = de.emp_no)
+INNER JOIN departments as d
+ON (de.dept_no = d.dept_no)
+WHERE d.dept_name in ('Sales','Development')
+ORDER BY d.dept_name DESC;
+
+SELECT * FROM dept_info_sales_devlp

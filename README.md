@@ -94,7 +94,7 @@ ORDER BY "Count" desc;
 
 In conclusion, it all depends on how many retiring employees are willing to stay and mentor others. Nevertheless, a good mentor to mentee ratio I would say is 1:3. That is one mentor for 3 new employees. Assuming each year there are more or less 13,000 employees retiring and 13,000 new employees entering, we would need 3,000-4,000 mentors distributed proportionally in all the departments.  We would need that in order for every department to stay put, at least 25% of the retirees accept the mentorship program because that would leave PH witha a 1:3 ratio. 
 
-We can see that there is an explicit pattern in the results. There is one group consisting of the first three departments with more than 2000 employees leaving, and there is another group with the rest of the departments with around 700 to 800 employees leaving. In order for this to work, 25% of retiring employees should be able to stay mentoring, that would be somewhat like 188 mentors for Marketing, Finance, HR, Research, Quality Mgtm, and Customer service and around 625 mentors for Development, Production, and Sales. 
+We can see that there is an explicit pattern in the results. There is one group consisting of the first three departments with more than 2000 employees leaving on each of them, and there is another group with the rest of the departments with around 700 to 800 employees leaving on each of them. In order for this to work, 25% of retiring employees should be able to stay mentoring (1:3 ratio) that would be somewhat like 188 mentors for each Marketing, Finance, HR, Research, Quality Mgtm, and Customer service and around 625 mentors for Development, Production, and Sales. 
 
 
 

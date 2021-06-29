@@ -44,7 +44,7 @@ To download: [title_mentorship_eligibility.csv](https://github.com/nicoserrano/P
 
 
 ## Summary
-- Ideally, as the silver tsunami approaches the idea would be to prepare and be on the look for 13,505 employees. This number represents the number of people that are currently working at the company, have been there since 1985 to 1988, and their birth date is between 1962 and 1965 to be eligible to leave work. The plan is to offer these people the mentorship program so that they can keep mentoring new employees. However, if they decide to go PH should be ready to hire that amount of people. 
+Ideally, as the silver tsunami approaches the idea would be to prepare and be on the look for 13,505 employees. This number represents the number of people that are currently working at the company, have been there since 1985 to 1988, and their birth date is between 1962 and 1965 to be eligible to leave work. The plan is to offer these people the mentorship program so that they can keep mentoring new employees. However, if they decide to go PH should be ready to hire that amount of people. 
 
 ```
 SELECT DISTINCT ON (emp_no) e.emp_no, e.first_name, e.last_name, e.birth_date, de.from_date, de.to_date, t.title
@@ -91,9 +91,10 @@ ORDER BY "Count" desc;
 ```
 ![employees_leaving_by_dept_pic](https://user-images.githubusercontent.com/83378141/123868118-4328b980-d8fd-11eb-81eb-fe23e80cffc4.png)
 
-We can see that there is an explicit pattern in the results. There is one group of the first three departments with more than 2000 employees leaving, and there is another group with the rest of the departments with around 700 to 800 employees leaving. If we were pessimists and assumed that only 10% of retiring employees are going to stay mentoring, that would leave us with somewhat like 75 mentors for Marketin, Finance, HR, Research, Quality Mgtm, and Customer service and around 250 for Development, Production, and Sales. 
 
+In conclusion, it all depends on how many retiring employees are willing to stay and mentor others. Nevertheless, a good mentor to mentee ratio I would say is 1:3. That is one mentor for 3 new employees. Assuming each year there are more or less 13,000 employees retiring and 13,000 new employees entering, we would need 3,000-4,000 mentors distributed proportionally in all the departments.  We would need that in order for every department to stay put, at least 25% of the retirees accept the mentorship program because that would leave PH witha a 1:3 ratio. 
 
+We can see that there is an explicit pattern in the results. There is one group consisting of the first three departments with more than 2000 employees leaving, and there is another group with the rest of the departments with around 700 to 800 employees leaving. In order for this to work, 25% of retiring employees should be able to stay mentoring, that would be somewhat like 188 mentors for Marketing, Finance, HR, Research, Quality Mgtm, and Customer service and around 625 mentors for Development, Production, and Sales. 
 
 
 

@@ -44,6 +44,55 @@ To download: [title_mentorship_eligibility.csv](https://github.com/nicoserrano/P
 
 
 ## Summary
+- Ideally, as the silver tsunami approaches the idea would be to prepare and be on the look for 13,505 employees. This number represents the number of people that are currently working at the company, have been there since 1985 to 1988, and their birth date is between 1962 and 1965 to be eligible to leave work. The plan is to offer these people the mentorship program so that they can keep mentoring new employees. However, if they decide to go PH should be ready to hire that amount of people. 
+
+```
+SELECT DISTINCT ON (emp_no) e.emp_no, e.first_name, e.last_name, e.birth_date, de.from_date, de.to_date, t.title
+INTO employees_leaving
+FROM employees as e
+JOIN dept_emp as de
+ON (e.emp_no = de.emp_no)
+JOIN titles as t
+ON (e.emp_no = t.emp_no)
+WHERE (de.to_date = '9999-01-01') AND (e.birth_date BETWEEN '1962-01-01' AND '1965-12-31')
+	AND (de.from_date BETWEEN '1985-01-01' AND '1988-12-31')
+ORDER BY e.emp_no
+```
+
+To download: [employees_leaving.csv](https://github.com/nicoserrano/Pewlett-Hackard-Analysis/files/6736392/employees_leaving.csv)
+
+Now, to check if there are enough potential mentors in all of the departments, we recreated the employees_leaving table to add the department they belong to. 
+
+```
+SELECT DISTINCT ON (emp_no) e.emp_no, d.dept_name, e.first_name, e.last_name, e.birth_date, de.from_date, de.to_date, t.title
+INTO employees_leaving_by_dept
+FROM employees as e
+JOIN dept_emp as de
+ON (e.emp_no = de.emp_no)
+JOIN titles as t
+ON (e.emp_no = t.emp_no)
+LEFT JOIN departments as d
+ON (de.dept_no = d.dept_no)
+WHERE (de.to_date = '9999-01-01') AND (e.birth_date BETWEEN '1962-01-01' AND '1965-12-31')
+	AND (de.from_date BETWEEN '1985-01-01' AND '1988-12-31')
+ORDER BY e.emp_no
+
+```
+
+To download: [employees_leaving_by_dept.csv](https://github.com/nicoserrano/Pewlett-Hackard-Analysis/files/6736464/employees_leaving_by_dept.csv)
+
+Now, I grouped the leaving employees table by department to count how many of them were in each department:
+
+```
+SELECT COUNT(first_name) "Count", dept_name
+FROM employees_leaving_by_dept
+GROUP BY dept_name
+ORDER BY "Count" desc;
+```
+![employees_leaving_by_dept_pic](https://user-images.githubusercontent.com/83378141/123868118-4328b980-d8fd-11eb-81eb-fe23e80cffc4.png)
+
+We can see that there is an explicit pattern in the results. There is one group of the first three departments with more than 2000 employees leaving, and there is another group with the rest of the departments with around 700 to 800 employees leaving. If we were pessimists and assumed that only 10% of retiring employees are going to stay mentoring, that would leave us with somewhat like 75 mentors for Marketin, Finance, HR, Research, Quality Mgtm, and Customer service and around 250 for Development, Production, and Sales. 
+
 
 
 

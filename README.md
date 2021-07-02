@@ -16,7 +16,7 @@ The goal of this project was to act as a Human Resources Analyst to determine wh
 
 - Software:
   - SQL
-  - PostgresSQL
+  - PostgreSQL
   - pgAdmin
 
 
